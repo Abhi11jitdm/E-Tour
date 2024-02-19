@@ -1,0 +1,40 @@
+.header {
+  width: 100%;
+  height: 60px; /* Adjust the height as needed */
+  background-color: #333; /* Navbar background color */
+  color: #fff; /* Text color */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000; /* Ensure it's above other content */
+}
+
+.header_container {
+  width: 90%; /* Adjust the width as needed */
+  max-width: 1200px; /* Set a maximum width */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.nav_links {
+  display: flex;
+}
+
+.nav_link {
+  margin-right: 20px; /* Adjust the spacing between links */
+  color: #fff; /* Text color for links */
+  text-decoration: none;
+}
+
+.nav_link:hover {
+  text-decoration: underline; /* Underline on hover */
+}

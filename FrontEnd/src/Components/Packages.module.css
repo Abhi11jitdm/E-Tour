@@ -1,0 +1,188 @@
+/* .maincontainer {
+  margin: 10%;
+}
+
+.package_container {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 20px;
+  width: 90%;
+}
+
+.left,
+.middle,
+.right {
+  width: calc(33.33% - 40px);
+}
+
+.left {
+  text-align: left;
+}
+
+.middle {
+  text-align: center;
+}
+
+.right {
+  text-align: right;
+}
+
+.package_container {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.left,
+.middle,
+.right {
+  width: calc(33.33% - 40px);
+}
+
+.left {
+  text-align: left;
+}
+
+.middle {
+  text-align: center;
+}
+
+.right {
+  text-align: right;
+}
+
+.package_image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+}
+ */
+
+.maincontainer {
+  margin: 10%;
+}
+
+.package_container {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 20px;
+  width: 90%;
+}
+
+.left,
+.middle,
+.right {
+  width: 33.33%;
+  padding: 0 20px;
+}
+
+.left {
+  text-align: left;
+}
+
+.middle {
+  text-align: center;
+}
+
+.right {
+  text-align: right;
+}
+
+.package_image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* .right {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  border: 1px solid black;
+}
+
+.right > div {
+  display: flex;
+  flex-wrap: wrap; 
+}
+
+.right > div > div {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+  flex: 2; 
+}
+
+.right > div > div:nth-child(2n) {
+  margin-right: 0; 
+} */
+/* 
+.right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center; 
+}
+
+.right > div {
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: center;
+  margin-bottom: 10px; 
+
+.right > div > div {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+  flex: 1; 
+}
+
+.right > div > div:nth-child(2n) {
+  margin-right: 0; 
+} */
+
+.right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center; /* Center the text horizontally */
+}
+
+.right > div {
+  display: flex;
+  flex-wrap: wrap; /* Allow items to wrap to the next line */
+  justify-content: center; /* Center items horizontally */
+  margin-bottom: 10px; /* Add margin between rows */
+}
+
+.right > div > div {
+  /* display: flex;
+  align-items: center;
+  margin-right: 20px; */
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: space-around;
+}
+
+.right > div > div span {
+  margin-left: 10px; /* Add spacing between icon and text */
+}
+
+.right > div > div:nth-child(2n) {
+  margin-right: 0; /* Remove margin for every second icon to prevent extra space */
+}

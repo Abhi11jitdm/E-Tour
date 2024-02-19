@@ -1,0 +1,119 @@
+/* 
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px; 
+}
+
+.itemContainer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  background-color: #f9f9f9; 
+  border-radius: 5px; 
+  padding: 20px; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  width: calc(60% - 10px);
+}
+
+.right {
+  width: auto;
+  display: flex;
+  justify-content: space-around;
+}
+
+.details {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.day {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.description {
+  margin-top: 10px;
+}
+
+.inclusions {
+  margin-top: 10px;
+}
+
+.inclusions span {
+  margin-right: 10px;
+}
+
+.stay {
+  margin-top: 10px;
+}
+
+.right img {
+  max-width: 50%;
+  height: auto;
+  border-radius: 5px;
+  overflow: hidden;
+} */
+
+/* Iternary.module.css */
+
+/* Iternary.module.css */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 80%;
+  margin-top: 10%;
+  margin-inline: auto;
+  flex-wrap: nowrap;
+  align-content: stretch;
+  justify-content: space-evenly;
+  margin-bottom: 10%;
+  /* background-color: tan; */
+}
+
+.card {
+  display: flex;
+  width: 100%;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.left {
+  flex: 1;
+  padding: 10px;
+}
+
+.right {
+  flex: 1;
+  padding: 1%;
+}
+
+.day {
+  font-weight: bold;
+}
+
+.info {
+  margin-top: 5px;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* Iternary.module.css */
