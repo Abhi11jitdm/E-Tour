@@ -42,7 +42,11 @@ function SubCategories() {
               handleContainerClick(subcategory.subcategory_id);
             }}
           >
-            <img src="/imgs/img1INT.jpg" alt={subcategory.subcategory_name} />
+            <img
+              src={subcategory.subcategory_imgage_path}
+              alt={subcategory.subcategory_name}
+              style={{ height: "250px" }}
+            />
             <div className={styles.category_card_info}>
               <h2>{subcategory.subcategory_name}</h2>
               <p>{subcategory.subcategory_info}</p>

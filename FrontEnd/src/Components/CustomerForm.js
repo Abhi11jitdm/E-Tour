@@ -389,14 +389,14 @@ function CustomerForm() {
     }
 
     try {
-      const response = await fetch("http://localhost:8080/api/customer", {
+      const response = await fetch("http://localhost:8080/customer", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(customer),
       });
-
+      console.log(customer);
       if (!response.ok) {
         const data = await response.json();
         throw new Error(data);
