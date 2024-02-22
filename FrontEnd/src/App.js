@@ -10,7 +10,7 @@ function App() {
         <NavBar></NavBar>
         <Main></Main>
       </SelectedOptionsProvider>
-      <Footer></Footer>
+      {/* <Footer></Footer> */}
     </div>
   );
 }

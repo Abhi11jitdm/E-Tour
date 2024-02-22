@@ -14,11 +14,18 @@ namespace Etour_DotNet_Backend
 
             builder.Services.AddControllers();
             builder.Services.AddTransient<IPackageRepository, PackageRepository>();
-
+            builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
             builder.Services.AddDbContext<ScottDbContext>(options => options.UseMySQL(builder.Configuration.GetConnectionString("EtourDbConnection")));
 
 
-
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("MyAllowSpecificOrigins",
+                                  builder =>
+                                  {
+                                      builder.WithOrigins("*").AllowAnyHeader().AllowAnyMethod();
+                                  });
+            });
 
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
@@ -32,7 +39,7 @@ namespace Etour_DotNet_Backend
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
-
+            app.UseCors("MyAllowSpecificOrigins");
             app.UseHttpsRedirection();
 
             app.UseAuthorization();

@@ -11,10 +11,12 @@ function Categories() {
     async function getCategories() {
       try {
         const response = await fetch("http://localhost:8080/api/categories");
+        // const response = await fetch("https://localhost:7159/api/category"); //DotNet
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
         const data = await response.json();
+        console.log(data);
         setCategories(data);
       } catch (error) {
         console.error("Error fetching data:", error);
