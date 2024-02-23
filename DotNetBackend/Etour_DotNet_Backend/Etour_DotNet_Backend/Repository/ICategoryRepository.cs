@@ -5,7 +5,7 @@ namespace Etour_DotNet_Backend.Repository
 {
     public interface ICategoryRepository
     {
-        public Task<ActionResult<IEnumerable<Category>?>> getCategories();
-        public Task<Category> getCategoryById(int id);
+        public Task<IEnumerable<Category>> getCategories();
+        public  Task<Category> getCategoryById(int id);
     }
 }
