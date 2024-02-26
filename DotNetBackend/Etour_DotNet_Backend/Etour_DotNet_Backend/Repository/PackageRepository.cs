@@ -36,6 +36,12 @@ namespace Etour_DotNet_Backend.Repository
             return _context.Packages.ToList();
         }
 
+        public async Task<ActionResult<IEnumerable<Package>>> GetPackagesByCategoryId(int id)
+        {
+            var packages = _context.Packages.FromSql($"SELECT * FROM packages where category_id={id} and subcategory_id is null");
+            return packages.ToList();
+        }
+
         public async Task<ActionResult<IEnumerable<Package>>> GetPackagesBySubCategoryId(int id)
         {
             var packages =  _context.Packages.FromSql($"SELECT * FROM packages where subcategory_id={id}");

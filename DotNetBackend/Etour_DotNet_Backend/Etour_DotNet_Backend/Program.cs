@@ -13,6 +13,7 @@ namespace Etour_DotNet_Backend
             var builder = WebApplication.CreateBuilder(args);
 
             builder.Services.AddControllers();
+            builder.Configuration.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
             builder.Services.AddTransient<IPackageRepository, PackageRepository>();
             builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
             builder.Services.AddTransient<ISubCategoryRepository, SubCategoryRepository>();
@@ -30,7 +31,7 @@ namespace Etour_DotNet_Backend
 
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-            builder.WebHost.UseUrls("https://localhost:7034");
+//            builder.WebHost.UseUrls("https://localhost:7034");
 
             var app = builder.Build();
 
@@ -48,8 +49,8 @@ namespace Etour_DotNet_Backend
 
 
             app.MapControllers();
-
-            app.Run();
+            var url = builder.Configuration["Kestrel:Endpoints:Http:Url"];
+            app.Run(url);
         }
     }
 }

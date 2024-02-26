@@ -10,5 +10,7 @@ namespace Etour_DotNet_Backend.Repository
         public  Task<Package> getPackageById(int id);
 
         public Task<ActionResult<IEnumerable<Package>>> GetPackagesBySubCategoryId(int id);
+
+        public Task<ActionResult<IEnumerable<Package>>> GetPackagesByCategoryId(int id);
     }
 }
