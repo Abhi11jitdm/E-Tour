@@ -580,3 +580,5 @@ D:\E-Tour\Projects\E-Tour\DotNetBackend\Etour_DotNet_Backend\Etour_DotNet_Backen
 D:\E-Tour\Projects\E-Tour\DotNetBackend\Etour_DotNet_Backend\Etour_DotNet_Backend\obj\Debug\net7.0\Etour_DotNet_Backend.pdb
 D:\E-Tour\Projects\E-Tour\DotNetBackend\Etour_DotNet_Backend\Etour_DotNet_Backend\obj\Debug\net7.0\Etour_DotNet_Backend.genruntimeconfig.cache
 D:\E-Tour\Projects\E-Tour\DotNetBackend\Etour_DotNet_Backend\Etour_DotNet_Backend\obj\Debug\net7.0\ref\Etour_DotNet_Backend.dll
+D:\E-Tour\Projects\E-Tour\DotNetBackend\Etour_DotNet_Backend\Etour_DotNet_Backend\bin\Debug\net7.0\Castle.Core.dll
+D:\E-Tour\Projects\E-Tour\DotNetBackend\Etour_DotNet_Backend\Etour_DotNet_Backend\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Proxies.dll

@@ -15,6 +15,7 @@ namespace Etour_DotNet_Backend
             builder.Services.AddControllers();
             builder.Services.AddTransient<IPackageRepository, PackageRepository>();
             builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
+            builder.Services.AddTransient<ISubCategoryRepository, SubCategoryRepository>();
             builder.Services.AddDbContext<ScottDbContext>(options => options.UseMySQL(builder.Configuration.GetConnectionString("EtourDbConnection")));
 
 
@@ -29,6 +30,7 @@ namespace Etour_DotNet_Backend
 
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.WebHost.UseUrls("https://localhost:7034");
 
             var app = builder.Build();
 

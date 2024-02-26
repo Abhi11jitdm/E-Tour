@@ -27,6 +27,19 @@ namespace Etour_DotNet_Backend.Controllers
         }
 
         [HttpGet("{id}")]
+        public async Task<ActionResult<IEnumerable<Package>>> GetPackageById(int id)
+        {
+            var packages = await _packageRepository.GetPackagesBySubCategoryId(id);
+
+            if (packages == null)
+            {
+                return NotFound(); // Return 404 Not Found if no subcategories are found
+            }
+
+            return packages;
+        }
+
+        [HttpGet("/package/{id}")]
         public async Task<Package> getPackageById(int id)
         {
             var package = await _packageRepository.getPackageById(id);

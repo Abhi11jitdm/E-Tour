@@ -6,6 +6,11 @@ namespace Etour_DotNet_Backend.DbRepos;
 
 public partial class ScottDbContext : DbContext
 {
+
+    //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    //{
+    //    optionsBuilder.UseLazyLoadingProxies(); 
+    //}
     public ScottDbContext()
     {
     }
