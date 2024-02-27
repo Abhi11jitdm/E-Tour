@@ -15,6 +15,7 @@ function BookPass() {
   const [passengers, setPassengers] = useState([]);
   const [userPass, setUserPass] = useState([]);
   const cId = JSON.parse(sessionStorage.getItem("userinfo")).customer_id;
+  const token = localStorage.getItem("token");
   let cost1 = 0;
   const [passenger, setPassenger] = useState({
     firstName: "",
@@ -49,12 +50,13 @@ function BookPass() {
         package_id: packageid,
         customer_id: cId,
       };
-
+      // const header = { Authorization: `Bearer ${token}` };
       try {
         const response = await fetch("http://localhost:8080/api/passenger", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify(passTab),
         });

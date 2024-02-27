@@ -30,20 +30,26 @@ function App() {
     }
     try {
       const response = await fetch(
-        `http://localhost:8080/api/customer/${email}/${password}`
+        `http://localhost:8080/api/register/${email}/${password}`
       );
       if (!response.ok) {
         throw new Error("Invalid email or password.");
       }
       const result = await response.json();
-      // console.log(result.customer_id);
-      customerIdSetter(result.customer_id);
-      login(result);
-      if (logged) {
-        navigate("/pass", { state: packageid });
+      const token = result.token;
+      if (token) {
+        login(result.registration);
+        localStorage.setItem("token", token);
+        if (logged) {
+          navigate("/pass", { state: packageid });
+        } else {
+          navigate("/");
+        }
       } else {
-        navigate("/");
+        setError("Invalid Details");
       }
+      console.log(result.registration.customer_id);
+      customerIdSetter(result.registration.customer_id);
     } catch (error) {
       setError("Invalid Details");
     }

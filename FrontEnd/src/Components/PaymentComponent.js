@@ -6,6 +6,7 @@ const PaymentComponent = ({ onClose, cost, total }) => {
   const { swari, packageid } = useSelectedOptions();
 
   const currentDate = new Date();
+  const token = localStorage.getItem("token");
 
   const year = currentDate.getFullYear();
   const month = currentDate.getMonth() + 1; // Months are zero-based, so we add 1
@@ -29,6 +30,7 @@ const PaymentComponent = ({ onClose, cost, total }) => {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify(booked),
         });
