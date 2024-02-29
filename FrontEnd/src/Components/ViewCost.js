@@ -43,8 +43,9 @@ import ViewCostTable from "./ViewCostTable";
 
 function ViewCost() {
   const { packageid, swari } = useSelectedOptions();
-
   const [cost, setCost] = useState();
+  const [userPass, setUserPass] = useState();
+  const cId = JSON.parse(sessionStorage.getItem("userinfo")).customer_id;
   // const [passengers, setPassengers] = useState([]);
   // console.log(swari);
   useEffect(() => {
@@ -65,6 +66,30 @@ function ViewCost() {
 
     getCostByPackageId();
   }, [packageid]);
+
+  // useEffect(() => {
+  //   console.log("inside useeffect of viewcost");
+  //   if (sessionStorage.getItem("userinfo")) {
+  //     console.log("inside if of viewcost");
+
+  //     function getUserPass() {
+  //       try {
+  //         console.log("inside try of viewcost");
+
+  //         const response = fetch(
+  //           `http://localhost:8080/api/passenger/${cId}/info`
+  //         );
+  //         if (!response.ok) {
+  //           throw new Error("Network response was not ok");
+  //         }
+  //         const data = response.json();
+  //         setUserPass(data);
+  //         console.log(data);
+  //       } catch {}
+  //     }
+  //     getUserPass();
+  //   }
+  // }, []);
 
   // Assume passengers are fetched from somewhere and set to state
 

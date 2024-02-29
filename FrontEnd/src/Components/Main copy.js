@@ -30,7 +30,6 @@ function Main() {
             <Route path="signup" element={<CustomerForm />} />
             <Route path="login" element={<Login />} />
             <Route path="/aboutus" element={<AboutUs />} />
-
             <Route path="pass" element={<BookPass />} />
             <Route path="cost" element={<ViewCost />} />
           </Route>

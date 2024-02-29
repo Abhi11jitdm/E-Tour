@@ -127,7 +127,7 @@ export default function App() {
   return (
     <MDBFooter
       className="text-center text-white"
-      style={{ backgroundColor: "#fff" }}
+      style={{ backgroundColor: "lightgrey" }}
     >
       <MDBContainer className="p-4">
         <section className="">
@@ -248,9 +248,9 @@ export default function App() {
         className="text-center p-3"
         style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}
       >
-        © 2020 Copyright:
+        © 2024 Copyright:
         <a className="text-white" href="https://mdbootstrap.com/">
-          MDBootstrap.com
+          awaitingtours.com
         </a>
       </div>
     </MDBFooter>

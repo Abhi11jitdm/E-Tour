@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./Categories.module.css";
 import CarouselComp from "./CarouselComp";
+import Services from "./Services";
 
 function Categories() {
   const [categories, setCategories] = useState([]);
@@ -62,6 +63,8 @@ function Categories() {
           </div>
         ))}
       </div>
+
+      <Services></Services>
     </div>
   );
 }

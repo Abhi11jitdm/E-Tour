@@ -25,7 +25,7 @@ function NavBar() {
           </Navbar.Brand>
           <Nav className="justify-content-end flex-grow-1 pe-3">
             <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/">About Us</Nav.Link>
+            <Nav.Link href="/aboutus">About Us</Nav.Link>
             {!isAuthenticated && !sessionStorage.getItem("userinfo") && (
               <Nav.Link href="/signup">Sign Up</Nav.Link>
             )}

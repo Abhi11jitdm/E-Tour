@@ -1,0 +1,18 @@
+.about-us-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-left: 120px;
+}
+
+.about-us-content {
+  width: 50%;
+}
+
+.about-us-images {
+  width: 40%;
+  height: 10%;
+  display: block;
+  margin-bottom: 200px;
+  padding-right: 150px;
+}

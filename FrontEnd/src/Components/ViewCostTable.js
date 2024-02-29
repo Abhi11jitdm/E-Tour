@@ -4,14 +4,37 @@ import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import PaymentComponent from "./PaymentComponent";
 import { useNavigate } from "react-router-dom";
-
+import { useEffect } from "react";
 function ViewCostTable({ cost, swari }) {
   const [showPayment, setShowPayment] = useState(false);
   const navigate = useNavigate();
+  const [userPass, setUserPass] = useState([]);
+  const cId = JSON.parse(sessionStorage.getItem("userinfo")).customer_id;
+  console.log(cId);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          `http://localhost:8080/api/passenger/${cId}/info`
+        );
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const data = await response.json();
+        setUserPass(data);
+        console.log(data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, [cId]);
+
   let total = 0;
-  console.log(swari);
-  if (cost && swari) {
-    total = swari.reduce((acc, passenger) => acc + passenger.cost1, 0);
+
+  if (cost && userPass) {
+    total = userPass.reduce((acc, passenger) => acc + passenger.pax_amount, 0);
     total += cost.cost;
   }
 
@@ -27,8 +50,29 @@ function ViewCostTable({ cost, swari }) {
     navigate("/");
   };
 
-  console.log(swari);
-  console.log(cost);
+  const handleRemove = async (passengerId) => {
+    try {
+      const response = await fetch(
+        `http://localhost:8080/api/passenger/${passengerId}`,
+        {
+          method: "DELETE",
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to delete passenger");
+      }
+
+      // Update userPass state by removing the deleted passenger
+      setUserPass((prevPassengers) =>
+        prevPassengers.filter((passenger) => passenger.pax_id !== passengerId)
+      );
+
+      console.log("Passenger deleted successfully");
+    } catch (error) {
+      console.error("Error deleting passenger:", error);
+    }
+  };
 
   return (
     <div
@@ -46,21 +90,30 @@ function ViewCostTable({ cost, swari }) {
           <thead>
             <tr>
               <th>#</th>
-              <th>First Name</th>
-              <th>Last Name</th>
+              <th> Name</th>
+
               <th>Passenger Type</th>
               <th>Cost</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
-            {swari &&
-              swari.map((passenger, index) => (
+            {userPass &&
+              userPass.map((passenger, index) => (
                 <tr key={index}>
                   <td>{index + 1}</td>
-                  <td>{passenger.firstName}</td>
-                  <td>{passenger.lastName}</td>
-                  <td>{passenger.passengerType}</td>
-                  <td>{passenger.cost1}</td>
+                  <td>{passenger.pax_name}</td>
+
+                  <td>{passenger.pax_type}</td>
+                  <td>{passenger.pax_amount}</td>
+                  <td>
+                    <Button
+                      variant="danger"
+                      onClick={() => handleRemove(passenger.pax_id)}
+                    >
+                      Remove
+                    </Button>
+                  </td>
                 </tr>
               ))}
 
@@ -79,15 +132,25 @@ function ViewCostTable({ cost, swari }) {
             </tr>
           </tbody>
         </Table>
-        <Button
-          type="submit"
-          className="submit-button"
-          size="lg"
-          variant="success"
-          onClick={handlePay}
-        >
-          Pay Now
-        </Button>
+        {userPass.length > 0 ? (
+          <Button
+            type="submit"
+            className="submit-button"
+            size="lg"
+            variant="success"
+            onClick={handlePay}
+          >
+            Pay Now
+          </Button>
+        ) : (
+          <Button
+            onClick={() => {
+              navigate("/pass");
+            }}
+          >
+            Add Passenger
+          </Button>
+        )}
         <br />
         <br />
         <Button

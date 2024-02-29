@@ -5,6 +5,7 @@ const SelectedOptionsContext = createContext();
 export function SelectedOptionsProvider({ children }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [packageid, setPackageId] = useState();
+  const [custUser, setCustUser] = useState();
   const [date, setDate] = useState("");
   const [customerId, setCustomerId] = useState();
   const [swari, setSwari] = useState([]);

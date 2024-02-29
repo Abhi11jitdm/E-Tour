@@ -46,7 +46,7 @@ function BookPass() {
         pax_name: passenger.firstName + " " + passenger.lastName,
         pax_birthdate: passenger.date,
         pax_type: passenger.passengerType,
-        pax_amount: passenger.cost, // Use the cost from the passenger state
+        pax_amount: passenger.cost1, // Use the cost from the passenger state
         package_id: packageid,
         customer_id: cId,
       };
@@ -147,7 +147,7 @@ function BookPass() {
         updatedCost = cost.child_without_bed;
         break;
       default:
-        updatedCost = 0;
+        updatedCost = cost.single_person_cost;
     }
 
     // Update the passenger state including the cost
@@ -166,7 +166,7 @@ function BookPass() {
     swariSetter(passengers);
     navigate("/cost");
   };
-  console.log(userPass);
+  // console.log(userPass);
   return (
     <div>
       <Form
@@ -289,11 +289,13 @@ function BookPass() {
         </Row>
         <Row className="mb-3">
           <Form.Select
+            required
             size="sm"
             name="passengerType"
             value={passenger.passengerType}
             onChange={handleChange}
             style={{ width: "30%" }}
+            defaultValue="Single Person"
           >
             <option>Select the Passenger Type</option>
             <option value="Single Person">

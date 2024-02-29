@@ -1,5 +1,5 @@
 import ReactPrint from "react-to-print";
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import Barcode from "react-barcode";
 import { useSelectedOptions } from "./SelectedOptionsContext";
 import { useLocation } from "react-router-dom";
@@ -8,25 +8,44 @@ import { MDBBtn } from "mdb-react-ui-kit";
 function PdfTemplate(props) {
   const ref = useRef();
   const location = useLocation();
+  const [userPass, setUserPass] = useState();
+
   const { swari, date, packageName } = useSelectedOptions();
   const passedData = location.state;
   const cost = passedData.cost.cost;
-  // const invoiceNumber = Math.floor(Math.random() * 90000000) + 10000000;
   const timestamp = new Date().getTime();
-
-  // Convert the timestamp to a string and remove the milliseconds
   const timestampString = timestamp.toString().slice(0, -3);
-
-  // Use the timestamp string as the invoice number
   const invoiceNumber = parseInt(timestampString);
   const name = JSON.parse(sessionStorage.getItem("userinfo")).firstname;
   const mobile = JSON.parse(sessionStorage.getItem("userinfo")).mobile;
   console.log(date);
   let total = 0;
   if (cost && swari) {
-    total = swari.reduce((acc, passenger) => acc + passenger.cost1, 0);
+    total = userPass.reduce((acc, passenger) => acc + passenger.pax_amount, 0);
     total += cost;
   }
+
+  const cId = JSON.parse(sessionStorage.getItem("userinfo")).customer_id;
+  console.log(cId);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          `http://localhost:8080/api/passenger/${cId}/info`
+        );
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const data = await response.json();
+        setUserPass(data);
+        console.log(data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, [cId]);
 
   return (
     <>
@@ -78,31 +97,31 @@ function PdfTemplate(props) {
                     <thead>
                       <tr>
                         <th>#</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
+                        <th> Name</th>
+
                         <th>Passenger Type</th>
                         <th>Cost</th>
                       </tr>
                     </thead>
                     <tbody>
-                      {swari &&
-                        swari.map((passenger, index) => (
+                      {userPass &&
+                        userPass.map((passenger, index) => (
                           <tr key={index}>
                             <td>{index + 1}</td>
-                            <td>{passenger.firstName}</td>
-                            <td>{passenger.lastName}</td>
-                            <td>{passenger.passengerType}</td>
-                            <td>{passenger.cost1}</td>
+                            <td>{passenger.pax_name}</td>
+
+                            <td>{passenger.pax_type}</td>
+                            <td>{passenger.pax_amount}</td>
                           </tr>
                         ))}
                       <tr>
-                        <td colSpan="4" style={{ textAlign: "right" }}>
+                        <td colSpan="3" style={{ textAlign: "right" }}>
                           Tour Package Cost:
                         </td>
                         <td>{cost}</td>
                       </tr>
                       <tr style={{ color: "#F81D2D" }}>
-                        <td colSpan="4" style={{ textAlign: "right" }}>
+                        <td colSpan="3" style={{ textAlign: "right" }}>
                           Total:
                         </td>
                         <td>{total}</td>

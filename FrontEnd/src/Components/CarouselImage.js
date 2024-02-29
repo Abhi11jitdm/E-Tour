@@ -5,7 +5,7 @@ const CarouselImage = ({ src, text }) => {
     <div
       style={{
         maxWidth: "100%",
-        maxHeight: "100%",
+        maxHeight: "50%",
         overflow: "hidden",
         marginTop: "50px",
       }}
