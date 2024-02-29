@@ -285,19 +285,19 @@ public partial class ScottDbContext : DbContext
                 .HasMaxLength(255)
                 .HasColumnName("pax_type");
 
-            entity.HasOne(d => d.Booking).WithMany(p => p.Passengers)
-                .HasForeignKey(d => d.BookingId)
-                .HasConstraintName("FKtco0omesfld1qi5sw76eomvt4");
+            //entity.HasOne(d => d.Booking).WithMany(p => p.Passengers)
+            //    .HasForeignKey(d => d.BookingId)
+            //    .HasConstraintName("FKtco0omesfld1qi5sw76eomvt4");
 
-            entity.HasOne(d => d.Customer).WithMany(p => p.Passengers)
-                .HasForeignKey(d => d.CustomerId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FKa4rwyahmk3workwa3j3mwms2e");
+            //entity.HasOne(d => d.Customer).WithMany(p => p.Passengers)
+            //    .HasForeignKey(d => d.CustomerId)
+            //    .OnDelete(DeleteBehavior.ClientSetNull)
+            //    .HasConstraintName("FKa4rwyahmk3workwa3j3mwms2e");
 
-            entity.HasOne(d => d.Package).WithMany(p => p.Passengers)
-                .HasForeignKey(d => d.PackageId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK5bwncqhjqpi0jdvn02j0br2xa");
+            //entity.HasOne(d => d.Package).WithMany(p => p.Passengers)
+            //    .HasForeignKey(d => d.PackageId)
+            //    .OnDelete(DeleteBehavior.ClientSetNull)
+            //    .HasConstraintName("FK5bwncqhjqpi0jdvn02j0br2xa");
         });
 
         modelBuilder.Entity<SubCategory>(entity =>

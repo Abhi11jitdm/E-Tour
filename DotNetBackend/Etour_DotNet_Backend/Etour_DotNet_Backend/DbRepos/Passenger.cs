@@ -21,9 +21,9 @@ public partial class Passenger
 
     public string? PaxType { get; set; }
 
-    public virtual Booking? Booking { get; set; }
+    //public virtual Booking? Booking { get; set; }
 
-    public virtual Customer Customer { get; set; } = null!;
+    //public virtual Customer Customer { get; set; } = null!;
 
-    public virtual Package Package { get; set; } = null!;
+    //public virtual Package Package { get; set; } = null!;
 }

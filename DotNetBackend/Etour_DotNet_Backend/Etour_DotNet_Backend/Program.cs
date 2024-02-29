@@ -1,6 +1,7 @@
 
 using Etour_DotNet_Backend.DbRepos;
 using Etour_DotNet_Backend.Repository;
+using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.EntityFrameworkCore;
 using System;
 
@@ -17,6 +18,11 @@ namespace Etour_DotNet_Backend
             builder.Services.AddTransient<IPackageRepository, PackageRepository>();
             builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
             builder.Services.AddTransient<ISubCategoryRepository, SubCategoryRepository>();
+            builder.Services.AddTransient<IIternaryRepository, IternaryRepository>();
+            builder.Services.AddTransient<IDateRepository, DateRepository>();
+            builder.Services.AddTransient<ICustomerRepository, CustomerRepository>();
+            builder.Services.AddTransient<IPassengerRepository, PassengerRepository>();
+            builder.Services.AddTransient<ICostRepository, CostRepository>();
             builder.Services.AddDbContext<ScottDbContext>(options => options.UseMySQL(builder.Configuration.GetConnectionString("EtourDbConnection")));
 
 
