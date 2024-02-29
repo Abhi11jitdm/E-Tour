@@ -42,6 +42,7 @@ function Categories() {
           <div
             className={styles.category_card}
             key={category.category_id}
+            style={{ background: "lightgrey" }}
             onClick={() => {
               handleContainerClick(
                 category.category_id,

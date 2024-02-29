@@ -17,7 +17,7 @@ namespace Etour_DotNet_Backend.Controllers
         }
 
         [HttpGet("{id}")]
-        public Cost GetCostByPackId(int id)
+        public Cost? GetCostByPackId(int id)
         {
             return _costRepository.GetCostByPackageId(id);
         }

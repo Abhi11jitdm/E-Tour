@@ -7,7 +7,7 @@ import { useSelectedOptions } from "./SelectedOptionsContext";
 import Button from "react-bootstrap/Button";
 
 const Iternary = () => {
-  const { packSetter, packageSetter, packageName } = useSelectedOptions();
+  const { packageName, packageid } = useSelectedOptions();
 
   const [packages, setPackages] = useState([]);
   const { id } = useParams();
@@ -39,19 +39,14 @@ const Iternary = () => {
       getSubCategory();
     }
   }, [id]);
-  function handleBookNowClick(pack, packID) {
-    const userInfo = sessionStorage.getItem("userinfo");
-    const isUserLoggedIn = !!userInfo;
-    if (isUserLoggedIn) {
-      packSetter(packID);
-      packageSetter(packageName);
-      navigate(`/dates/${packID}`);
-    } else {
-      navigate("/login", { state: pack });
-    }
+  function handleBookNowClick(packName, packID) {
+    console.log(packageid);
+
+    navigate(`/dates/${packageid}`);
   }
   return (
     <div className={styles.container}>
+      <h1 className={styles.heading}>YOUR ITINERARY</h1>
       {packages.iternary &&
         packages.iternary.map((iternary) => (
           <div key={iternary.iternery_id} className={styles.card}>
@@ -60,11 +55,13 @@ const Iternary = () => {
               <div className={styles.info}>{iternary.iternery_info}</div>
             </div>
             <div className={styles.right}>
-              <img
-                src={iternary.iternery_imgpath}
-                alt={`Day ${iternary.iternery_day}`}
-                className={styles.image}
-              />
+              {iternary.iternery_imgpath !== "#" && (
+                <img
+                  src={iternary.iternery_imgpath}
+                  alt={`Day ${iternary.iternery_day}`}
+                  className={styles.image}
+                />
+              )}
             </div>
           </div>
         ))}
@@ -73,7 +70,7 @@ const Iternary = () => {
         size="lg"
         style={{ marginRight: "10px" }}
         onClick={() => {
-          handleBookNowClick(pack, id);
+          handleBookNowClick(pack, packageName);
         }}
       >
         Book Now

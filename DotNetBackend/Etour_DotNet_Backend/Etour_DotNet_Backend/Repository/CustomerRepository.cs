@@ -12,6 +12,12 @@ namespace Etour_DotNet_Backend.Repository
             _context = context;
         }
 
+        public void CreateCustomer(Customer customer)
+        {
+            _context.Customers.Add(customer);
+            _context.SaveChanges();
+        }
+
         public Customer GetUserByEmailIdAndPass(string emailId, string password)
         {
             return _context.Customers

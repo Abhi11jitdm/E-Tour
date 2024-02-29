@@ -3,6 +3,7 @@ import { useRef } from "react";
 import Barcode from "react-barcode";
 import { useSelectedOptions } from "./SelectedOptionsContext";
 import { useLocation } from "react-router-dom";
+import { MDBBtn } from "mdb-react-ui-kit";
 
 function PdfTemplate(props) {
   const ref = useRef();
@@ -10,8 +11,14 @@ function PdfTemplate(props) {
   const { swari, date, packageName } = useSelectedOptions();
   const passedData = location.state;
   const cost = passedData.cost.cost;
-  const invoiceNumber = Math.floor(Math.random() * 90000000) + 10000000;
+  // const invoiceNumber = Math.floor(Math.random() * 90000000) + 10000000;
+  const timestamp = new Date().getTime();
 
+  // Convert the timestamp to a string and remove the milliseconds
+  const timestampString = timestamp.toString().slice(0, -3);
+
+  // Use the timestamp string as the invoice number
+  const invoiceNumber = parseInt(timestampString);
   const name = JSON.parse(sessionStorage.getItem("userinfo")).firstname;
   const mobile = JSON.parse(sessionStorage.getItem("userinfo")).mobile;
   console.log(date);
@@ -23,7 +30,11 @@ function PdfTemplate(props) {
 
   return (
     <>
-      <div className="container" ref={ref} style={{ marginTop: "10%" }}>
+      <div
+        className="container"
+        ref={ref}
+        style={{ marginTop: "10%", width: "70%", height: "auto" }}
+      >
         <div className="container">
           <div className="row">
             <div>
@@ -31,7 +42,7 @@ function PdfTemplate(props) {
                 <div className="row">
                   <div className="col-md-4 brcode">
                     <Barcode
-                      value={`4n%${invoiceNumber}+ut%`}
+                      value={packageName + invoiceNumber}
                       width={1}
                       height={50}
                       displayValue={false}
@@ -39,6 +50,15 @@ function PdfTemplate(props) {
                   </div>
                   <div className="col-md-8 text-right bbc">
                     <h4 style={{ color: "#325aa8" }}>
+                      <img
+                        src="/logo192.png"
+                        alt=""
+                        style={{
+                          width: "70px",
+                          height: "50px",
+                          marginRight: "10px",
+                        }}
+                      />
                       <strong>Awaiting Tours</strong>
                     </h4>
                     <p>(+91) 1234567890</p>
@@ -121,12 +141,23 @@ function PdfTemplate(props) {
           </div>
         </div>
       </div>
+      <div
+        style={{
+          justifyContent: "center",
+          alignItems: "center",
 
-      <ReactPrint
-        trigger={() => <button>Print</button>}
-        content={() => ref.current}
-        documentTitle={`INVOICE ${props.InvoiceNumber}`}
-      />
+          textAlign: "left",
+
+          marginLeft: "700px",
+          marginBottom: "20px",
+        }}
+      >
+        <ReactPrint
+          trigger={() => <MDBBtn color="info">Print</MDBBtn>}
+          content={() => ref.current}
+          documentTitle={`INVOICE ${props.InvoiceNumber}`}
+        />
+      </div>
     </>
   );
 }

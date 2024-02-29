@@ -59,8 +59,15 @@ function App() {
       <MDBRow>
         <MDBCol sm="6">
           <div className="d-flex flex-row ps-5 pt-5">
-            <MDBIcon fas icon="crow fa-3x me-3" style={{ color: "#709085" }} />
-            <span className="h1 fw-bold mb-0">Logo</span>
+            <MDBIcon>
+              {" "}
+              <img
+                src="/logo192.png"
+                alt=""
+                style={{ width: "70px", height: "50px", marginRight: "10px" }}
+              />
+            </MDBIcon>
+            <span className="h1 fw-bold mb-0">Awaiting Tours</span>
           </div>
 
           <div className="d-flex flex-column justify-content-center h-custom-2 w-75 pt-4">

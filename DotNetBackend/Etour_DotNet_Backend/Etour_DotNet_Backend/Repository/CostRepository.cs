@@ -10,7 +10,7 @@ namespace Etour_DotNet_Backend.Repository
         { 
             _context = context;
         }
-        public Cost GetCostByPackageId(int id)
+        public Cost? GetCostByPackageId(int id)
         {
             var cost = _context.Costs.FromSql($"SELECT * FROM cost where package_id={id}").FirstOrDefault();
             return cost;

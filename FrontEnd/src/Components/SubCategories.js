@@ -38,6 +38,7 @@ function SubCategories() {
           <div
             className={styles.category_card}
             key={subcategory.subcategory_id}
+            style={{ background: "lightgrey" }}
             onClick={() => {
               handleContainerClick(subcategory.subcategory_id);
             }}

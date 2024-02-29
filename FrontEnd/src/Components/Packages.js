@@ -119,8 +119,6 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import styles from "./Packages.module.css";
-
-import Button from "react-bootstrap/Button";
 import { useSelectedOptions } from "./SelectedOptionsContext";
 import PackageDiv from "./PackageDiv";
 
@@ -156,9 +154,10 @@ function Packages() {
     }
   }, [id, catsub]);
 
-  function handleButtonClick(id) {
-    packageSetter();
-    navigate(`/iternary/${id}`, { state: id });
+  function handleButtonClick(packID, packName) {
+    packSetter(packID);
+    packageSetter(packName);
+    navigate(`/iternary/${packID}`, { state: packID });
   }
 
   function handleBookNowClick(packID, packName) {

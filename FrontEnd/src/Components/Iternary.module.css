@@ -69,7 +69,7 @@
 
 /* Iternary.module.css */
 
-.container {
+/* .container {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -80,7 +80,19 @@
   align-content: stretch;
   justify-content: space-evenly;
   margin-bottom: 10%;
-  /* background-color: tan; */
+  
+} */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  margin: 10% auto;
+  flex-wrap: nowrap;
+  align-content: stretch;
+  margin-bottom: 10%;
 }
 
 .card {
@@ -114,6 +126,12 @@
   width: 50%;
   height: auto;
   border-radius: 10px;
+}
+
+.heading {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
 }
 
 /* Iternary.module.css */

@@ -66,7 +66,7 @@ function PackageDiv({ pack, handleBookNowClick, handleButtonClick }) {
           variant="secondary"
           size="lg"
           onClick={() => {
-            handleButtonClick(pack.package_id);
+            handleButtonClick(pack.package_id, pack.package_name);
           }}
         >
           Know More

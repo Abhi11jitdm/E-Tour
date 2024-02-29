@@ -5,5 +5,7 @@ namespace Etour_DotNet_Backend.Repository
     public interface ICustomerRepository
     {
         public Customer GetUserByEmailIdAndPass(string emailId, string password);
+
+        public void CreateCustomer(Customer customer);
     }
 }

@@ -4,6 +4,6 @@ namespace Etour_DotNet_Backend.Repository
 {
     public interface ICostRepository
     {
-        Cost GetCostByPackageId(int id);
+        Cost? GetCostByPackageId(int id);
     }
 }

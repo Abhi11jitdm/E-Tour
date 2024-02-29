@@ -21,5 +21,13 @@ namespace Etour_DotNet_Backend.Controllers
         {
             return _customerRepository.GetUserByEmailIdAndPass(emailid, password);
         }
+
+        [HttpPost]
+
+        public void CreateCustomer(Customer customer)
+        {
+            _customerRepository.CreateCustomer(customer);
+
+        }
     }
 }

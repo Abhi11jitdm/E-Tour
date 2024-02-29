@@ -3,10 +3,11 @@ import Table from "react-bootstrap/Table";
 
 import Button from "react-bootstrap/Button";
 import PaymentComponent from "./PaymentComponent";
+import { useNavigate } from "react-router-dom";
 
 function ViewCostTable({ cost, swari }) {
   const [showPayment, setShowPayment] = useState(false);
-
+  const navigate = useNavigate();
   let total = 0;
   console.log(swari);
   if (cost && swari) {
@@ -23,7 +24,7 @@ function ViewCostTable({ cost, swari }) {
   };
 
   const handleBack = () => {
-    // Handle cancel action
+    navigate("/");
   };
 
   console.log(swari);
