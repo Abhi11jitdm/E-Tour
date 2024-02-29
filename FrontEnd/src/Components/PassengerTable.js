@@ -16,7 +16,7 @@ function PassengerTable({ passengers, handleRemove }) {
           <th>City</th>
           <th>Zip</th>
           <th>Passenger Type</th>
-          <th>Action</th>
+          {/* <th>Action</th> */}
         </tr>
       </thead>
       <tbody>
@@ -30,9 +30,9 @@ function PassengerTable({ passengers, handleRemove }) {
             <td>{passenger.city}</td>
             <td>{passenger.zip}</td>
             <td>{passenger.passengerType}</td>
-            <td>
+            {/* <td>
               <Button onClick={() => handleRemove(index)}>Remove</Button>
-            </td>
+            </td> */}
           </tr>
         ))}
       </tbody>

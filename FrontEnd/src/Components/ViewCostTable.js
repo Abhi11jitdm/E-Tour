@@ -118,17 +118,20 @@ function ViewCostTable({ cost, swari }) {
               ))}
 
             <tr>
-              <td colSpan="4" style={{ textAlign: "right" }}>
+              <td colSpan="3" style={{ textAlign: "right" }}>
                 Tour Package Cost:
               </td>
+
               <td>{cost.cost}</td>
+              <td></td>
             </tr>
 
             <tr>
-              <td colSpan="4" style={{ textAlign: "right" }}>
+              <td colSpan="3" style={{ textAlign: "right" }}>
                 Total:
               </td>
               <td>{total}</td>
+              <td></td>
             </tr>
           </tbody>
         </Table>

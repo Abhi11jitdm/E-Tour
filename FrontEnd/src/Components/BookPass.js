@@ -158,8 +158,34 @@ function BookPass() {
     }));
   };
 
-  const handleRemove = (index) => {
-    setPassengers(passengers.filter((_, i) => i !== index));
+  // const handleRemove = (index) => {
+  //   setPassengers(passengers.filter((_, i) => i !== index));
+  // };
+
+  const handleRemove = async (passengerId) => {
+    try {
+      const response = await fetch(
+        `http://localhost:8080/api/passenger/${passengerId}`,
+        {
+          method: "DELETE",
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to delete passenger");
+      }
+
+      // Update userPass state by removing the deleted passenger
+      setPassengers((prevPassengers) =>
+        prevPassengers.filter((passenger) => passenger.pax_id !== passengerId)
+      );
+
+      // setPassengers(passengers.filter((_, i) => i !== index));
+
+      console.log("Passenger deleted successfully");
+    } catch (error) {
+      console.error("Error deleting passenger:", error);
+    }
   };
 
   const handlePayClick = () => {

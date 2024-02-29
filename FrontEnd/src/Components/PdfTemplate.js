@@ -8,7 +8,7 @@ import { MDBBtn } from "mdb-react-ui-kit";
 function PdfTemplate(props) {
   const ref = useRef();
   const location = useLocation();
-  const [userPass, setUserPass] = useState();
+  const [userPass, setUserPass] = useState([]);
 
   const { swari, date, packageName } = useSelectedOptions();
   const passedData = location.state;
@@ -19,11 +19,6 @@ function PdfTemplate(props) {
   const name = JSON.parse(sessionStorage.getItem("userinfo")).firstname;
   const mobile = JSON.parse(sessionStorage.getItem("userinfo")).mobile;
   console.log(date);
-  let total = 0;
-  if (cost && swari) {
-    total = userPass.reduce((acc, passenger) => acc + passenger.pax_amount, 0);
-    total += cost;
-  }
 
   const cId = JSON.parse(sessionStorage.getItem("userinfo")).customer_id;
   console.log(cId);
@@ -46,7 +41,11 @@ function PdfTemplate(props) {
 
     fetchData();
   }, [cId]);
-
+  let total = 0;
+  if (cost && swari) {
+    total = userPass.reduce((acc, passenger) => acc + passenger.pax_amount, 0);
+    total += cost;
+  }
   return (
     <>
       <div
