@@ -64,7 +64,7 @@ function App() {
               <img
                 src="/logo192.png"
                 alt=""
-                style={{ width: "70px", height: "50px", marginRight: "10px" }}
+                style={{ width: "150px", height: "auto", marginRight: "10px" }}
               />
             </MDBIcon>
             <span className="h1 fw-bold mb-0">Awaiting Tours</span>
